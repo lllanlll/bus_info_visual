@@ -1,6 +1,7 @@
 
 # 1. 初始化数据库链接
 # 引入全局库
+import config
 import pymysql
 from datetime import datetime
 
@@ -32,13 +33,7 @@ def timeAndInfo(event, flag):
 
 # 全局变量
 # 数据库配置
-DB_START_CONFIG = {
-    'host': 'bdm721269539.my3w.com',
-    'port': 3306,
-    'user': 'bdm721269539',
-    'password': 'Root0516',
-    'db': 'bdm721269539_db',
-}
+DB_START_CONFIG = config.getDbConfig()
 
 # 城市名称
 CITY_NAMES = {
@@ -184,7 +179,7 @@ def getAllLines(citys):
         timeAndInfo(f'结束{city}_info表的插入', 0)
 
 # 插入所有线路
-getAllLines(CITY_NAMES)
+# getAllLines(CITY_NAMES)
 
 
 cur.close()
